@@ -10,6 +10,6 @@ import org.hibernate.validator.constraints.Length;
 
 public record CourseRequest(
         @NotBlank @NotNull @Length(min = 5, max = 100) String name,
-        @NotNull @Length(max = 9) Category category,
-        @NotNull @Length(max = 7) Status status) {
+        @NotNull Category category,
+        @NotNull Status status) {
 }
