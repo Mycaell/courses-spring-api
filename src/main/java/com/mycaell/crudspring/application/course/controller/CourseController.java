@@ -1,12 +1,12 @@
 package com.mycaell.crudspring.application.course.controller;
 
-import com.mycaell.crudspring.domain.course.enums.Category;
 import com.mycaell.crudspring.domain.course.model.Course;
 import com.mycaell.crudspring.domain.course.service.ICourseService;
 import com.mycaell.crudspring.infrastructure.converter.service.IConverterService;
 import com.mycaell.crudspring.presentation.course.dto.CourseRequest;
 import com.mycaell.crudspring.presentation.course.dto.CourseResponse;
 
+import com.mycaell.crudspring.presentation.enums.dto.SelectOption;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -16,12 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Validated
 @RestController
@@ -78,8 +73,8 @@ public class CourseController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<List<String>> getCategories() {
-        List<String> categories = courseService.getCategories();
+    public ResponseEntity<List<SelectOption<String>>> getCategories() {
+        List<SelectOption<String>> categories = courseService.getCategories();
 
         return ResponseEntity.ok(categories);
     }

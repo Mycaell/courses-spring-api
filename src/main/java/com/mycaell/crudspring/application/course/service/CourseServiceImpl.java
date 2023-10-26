@@ -7,12 +7,12 @@ import com.mycaell.crudspring.domain.course.service.ICourseService;
 import com.mycaell.crudspring.infrastructure.persistence.repository.CourseRepository;
 
 import com.mycaell.crudspring.infrastructure.util.BeanUtils;
+import com.mycaell.crudspring.presentation.enums.dto.SelectOption;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class CourseServiceImpl implements ICourseService {
@@ -56,10 +56,14 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
-    public List<String> getCategories() {
-        List<String> categories = Stream.of(Category.values())
-                .map(e -> e.getValue())
-                .collect(Collectors.toList());
+    public List<SelectOption<String>> getCategories() {
+        var enumValues = Category.values();
+
+        List<SelectOption<String>> categories = new ArrayList<>();
+
+        for (var c : enumValues) {
+            categories.add(new SelectOption<>(c.getValue(), c.name()));
+        }
 
         return categories;
     }
