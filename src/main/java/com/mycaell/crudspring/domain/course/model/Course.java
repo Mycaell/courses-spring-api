@@ -29,7 +29,7 @@ public class Course implements Serializable {
     private Category category;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ACTIVE;
 
     public Long getId() {
         return id;
