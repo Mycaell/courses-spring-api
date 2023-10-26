@@ -5,6 +5,7 @@ import com.mycaell.crudspring.domain.course.model.Course;
 import com.mycaell.crudspring.domain.course.service.ICourseService;
 import com.mycaell.crudspring.infrastructure.persistence.repository.CourseRepository;
 
+import com.mycaell.crudspring.infrastructure.util.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,11 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public Course update(Long id, Course course) {
+        Course savedCourse = courseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Course"));
+
+        BeanUtils.copyNonNullProperties(course, savedCourse);
+
         return courseRepository.save(course);
     }
 
@@ -38,7 +44,7 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public Course findById(Long id) {
         Optional<Course> entityOpt = courseRepository.findById(id);
-        return entityOpt.orElseThrow(() -> new ResourceNotFoundException());
+        return entityOpt.orElseThrow(() -> new ResourceNotFoundException("Course"));
     }
 
     @Override
