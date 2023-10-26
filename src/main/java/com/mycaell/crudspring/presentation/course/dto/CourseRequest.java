@@ -20,9 +20,6 @@ public class CourseRequest implements Serializable {
     @NotNull
     private Category category;
 
-    @NotNull
-    private Status status;
-
     public String getName() {
         return name;
     }
@@ -39,20 +36,11 @@ public class CourseRequest implements Serializable {
         this.category = category;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
         return "CourseRequest{" +
                 "name='" + name + '\'' +
                 ", category=" + category +
-                ", status=" + status +
                 '}';
     }
 }
