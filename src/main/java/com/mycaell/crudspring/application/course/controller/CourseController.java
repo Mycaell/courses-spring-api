@@ -1,5 +1,6 @@
 package com.mycaell.crudspring.application.course.controller;
 
+import com.mycaell.crudspring.domain.course.enums.Category;
 import com.mycaell.crudspring.domain.course.model.Course;
 import com.mycaell.crudspring.domain.course.service.ICourseService;
 import com.mycaell.crudspring.infrastructure.converter.service.IConverterService;
@@ -15,7 +16,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Validated
 @RestController
@@ -69,6 +75,13 @@ public class CourseController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable @NotNull @Positive Long id) {
         courseService.delete(id);
+    }
+
+    @GetMapping("/categories")
+    public ResponseEntity<List<String>> getCategories() {
+        List<String> categories = courseService.getCategories();
+
+        return ResponseEntity.ok(categories);
     }
 
 }
