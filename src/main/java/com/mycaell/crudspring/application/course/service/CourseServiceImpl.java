@@ -36,7 +36,7 @@ public class CourseServiceImpl implements ICourseService {
 
         BeanUtils.copyNonNullProperties(course, savedCourse);
 
-        return courseRepository.save(course);
+        return courseRepository.save(savedCourse);
     }
 
     @Override
