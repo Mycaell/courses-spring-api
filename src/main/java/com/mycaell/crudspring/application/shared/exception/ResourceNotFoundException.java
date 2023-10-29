@@ -1,4 +1,4 @@
-package com.mycaell.crudspring.application.course.service.exception;
+package com.mycaell.crudspring.application.shared.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

@@ -1,6 +1,6 @@
 package com.mycaell.crudspring.application.course.service;
 
-import com.mycaell.crudspring.application.course.service.exception.ResourceNotFoundException;
+import com.mycaell.crudspring.application.shared.exception.ResourceNotFoundException;
 import com.mycaell.crudspring.domain.course.enums.Category;
 import com.mycaell.crudspring.domain.course.model.Course;
 import com.mycaell.crudspring.domain.course.service.ICourseService;
