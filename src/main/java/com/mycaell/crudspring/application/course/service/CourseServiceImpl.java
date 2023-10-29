@@ -46,13 +46,14 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public Course findById(Long id) {
-        Optional<Course> entityOpt = courseRepository.findById(id);
-        return entityOpt.orElseThrow(() -> new ResourceNotFoundException("Course"));
+        return courseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Course"));
     }
 
     @Override
     public void delete(Long id) {
-        courseRepository.deleteById(id);
+        courseRepository.delete(courseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Course")));
     }
 
     @Override
