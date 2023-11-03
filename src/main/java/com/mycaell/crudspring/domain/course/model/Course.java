@@ -13,10 +13,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(schema = "course")
 public class Course implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
