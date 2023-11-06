@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.mycaell</groupId>
-    <artifactId>crud-spring</artifactId>
+    <artifactId>courses-spring-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>crud-spring</name>
-    <description>Courses CRUD API</description>
+    <name>courses-spring-api</name>
+    <description>Courses API</description>
 
     <properties>
         <java.version>17</java.version>
